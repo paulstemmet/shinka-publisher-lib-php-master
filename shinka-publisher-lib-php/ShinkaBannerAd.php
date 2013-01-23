@@ -107,7 +107,7 @@ class ShinkaBannerAd
             if ($this->_RESIZE_IMAGES === FALSE && !isset($config['AdUnitID_'. $size]))
                 throw new Exception('AdUnitID_'. $size .' must be specified if image resizing is disabled');
 
-            $this->{_AdUnitID_. $size} = isset($config['AdUnitID_'. $size]) ? $config['AdUnitID_'. $size] : NULL;
+            $this->{'_AdUnitID_'. $size} = isset($config['AdUnitID_'. $size]) ? $config['AdUnitID_'. $size] : NULL;
         }
 
         $mxitUser = new MxitUser();
@@ -204,7 +204,7 @@ class ShinkaBannerAd
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Forwarded-For: '.$this->_clientDeviceIP)); //'Content-length: '.strlen($BannerRequest) 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->_TIMEOUT);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->_CONNECTTIMEOUT);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->_TIMEOUT);
 
         /**
          * Get the Ad object in json format
@@ -456,7 +456,7 @@ class ShinkaBannerAd
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Forwarded-For: '. $this->_clientDeviceIP));		
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->_TIMEOUT);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->_CONNECTTIMEOUT);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->_TIMEOUT);
 
         $impression_result = curl_exec($ch);
         curl_close($ch);		
