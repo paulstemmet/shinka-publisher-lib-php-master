@@ -131,21 +131,28 @@ class ShinkaBannerAd
         if ($this->_requestParam_xid == $this->_TESTUSER)
             print 'DeviceWidth:'. $deviceWidth . '<br/>'; 
 
-        if ($deviceWidth >= 320) 
+        if ($this->_RESIZE_IMAGES === TRUE)
         {
             $this->_adUnitIDToUse = $this->_AdUnitID_320;			
         }
-        elseif ($deviceWidth >= 216)
-        {
-            $this->_adUnitIDToUse = $this->_AdUnitID_216;
-        }
-        elseif ($deviceWidth >= 168)
-        {
-            $this->_adUnitIDToUse = $this->_AdUnitID_168;
-        }
         else
         {
-            $this->_adUnitIDToUse = $this->_AdUnitID_120;
+            if ($deviceWidth >= 320) 
+            {
+                $this->_adUnitIDToUse = $this->_AdUnitID_320;			
+            }
+            elseif ($deviceWidth >= 216)
+            {
+                $this->_adUnitIDToUse = $this->_AdUnitID_216;
+            }
+            elseif ($deviceWidth >= 168)
+            {
+                $this->_adUnitIDToUse = $this->_AdUnitID_168;
+            }
+            else
+            {
+                $this->_adUnitIDToUse = $this->_AdUnitID_120;
+            }
         }
 
         /**
