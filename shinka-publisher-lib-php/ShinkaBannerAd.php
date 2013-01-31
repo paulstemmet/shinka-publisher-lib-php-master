@@ -15,6 +15,7 @@ class ShinkaBannerAd
     const TYPE_HTML = 'html';
     const TYPE_INVALID = 'invalid';
     const TARGET_MXIT = 'mxit';
+    const TARGET_SELF = '_self';
 
     /**
      * The fields we need to set in the constructor so that we have enough info
@@ -261,7 +262,7 @@ class ShinkaBannerAd
                                 if ($this->_AD_TYPE == 'image' && $this->_requestParam_xid == $this->_TESTUSER)
                                     print '_mediaUrl: '.$creative->media.'<br/>';
 
-                                if($creative->target == self::TARGET_MXIT)
+                                if($creative->target == self::TARGET_MXIT || $creative->target == self::TARGET_SELF)
                                 {
                                     $this->_target = '';
                                 }
